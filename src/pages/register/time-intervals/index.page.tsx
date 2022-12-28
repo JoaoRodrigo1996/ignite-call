@@ -5,7 +5,7 @@ import {
   Heading,
   MultiStep,
   Text,
-  TextInput
+  TextInput,
 } from '@ignite-ui/react'
 import { ArrowRight } from 'phosphor-react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
@@ -20,7 +20,7 @@ import {
   IntervalDay,
   IntervalInputs,
   IntervalItem,
-  IntervalsContainer
+  IntervalsContainer,
 } from './styles'
 
 const timeIntervalsFormSchema = z.object({

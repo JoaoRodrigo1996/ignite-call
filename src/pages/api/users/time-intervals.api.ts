@@ -9,8 +9,8 @@ const timeIntervalsBodySchema = z.object({
     z.object({
       weekDay: z.number(),
       startTimeInMinutes: z.number(),
-      endTimeInMinutes: z.number()
-    })
+      endTimeInMinutes: z.number(),
+    }),
   ),
 })
 
@@ -28,22 +28,24 @@ export default async function handler(
     buildNextAuthOptions(req, res),
   )
 
-  if(!session) {
+  if (!session) {
     return res.status(401).end()
   }
 
   const { intervals } = timeIntervalsBodySchema.parse(req.body)
 
-  await Promise.all(intervals.map(interval => {
-    return prisma.userTimeInterval.create({
-      data: {
-        week_day: interval.weekDay,
-        time_start_in_minutes: interval.startTimeInMinutes,
-        time_end_in_minutes: interval.endTimeInMinutes,
-        user_id: session.user?.id
-      }
-    })
-  }))
+  await Promise.all(
+    intervals.map((interval) => {
+      return prisma.userTimeInterval.create({
+        data: {
+          week_day: interval.weekDay,
+          time_start_in_minutes: interval.startTimeInMinutes,
+          time_end_in_minutes: interval.endTimeInMinutes,
+          user_id: session.user?.id,
+        },
+      })
+    }),
+  )
 
   return res.status(201).end()
 }
