@@ -5,7 +5,7 @@ import { prisma } from '../prisma'
 
 export function PrismaAdapter(
   req: NextApiRequest | NextPageContext['req'],
-  res: NextApiResponse  | NextPageContext['res'],
+  res: NextApiResponse | NextPageContext['res'],
 ): Adapter {
   return {
     async createUser(user) {

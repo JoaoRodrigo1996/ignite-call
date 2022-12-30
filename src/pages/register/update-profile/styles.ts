@@ -10,8 +10,8 @@ export const ProfileBox = styled(Box, {
   label: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '$2'
-  }
+    gap: '$2',
+  },
 })
 
 export const FormAnnotation = styled(Text, {

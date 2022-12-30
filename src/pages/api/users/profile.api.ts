@@ -5,7 +5,7 @@ import { prisma } from '../../../lib/prisma'
 import { buildNextAuthOptions } from '../auth/[...nextauth].api'
 
 const updateProfileBodySchema = z.object({
-  bio: z.string()
+  bio: z.string(),
 })
 
 export default async function handler(
@@ -30,11 +30,11 @@ export default async function handler(
 
   await prisma.user.update({
     where: {
-      id: session.user.id
+      id: session.user.id,
     },
     data: {
       bio,
-    }
+    },
   })
 
   return res.status(204).end()

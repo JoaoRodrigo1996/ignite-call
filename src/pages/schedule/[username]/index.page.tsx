@@ -1,8 +1,8 @@
-import { Avatar, Heading, Text } from "@ignite-ui/react";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { prisma } from "../../../lib/prisma";
-import { ScheduleForm } from "./ScheduleForm";
-import { Container, UserHeader } from "./styles";
+import { Avatar, Heading, Text } from '@ignite-ui/react'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { prisma } from '../../../lib/prisma'
+import { ScheduleForm } from './ScheduleForm'
+import { Container, UserHeader } from './styles'
 
 interface ScheduleProps {
   user: {
@@ -12,7 +12,7 @@ interface ScheduleProps {
   }
 }
 
-export default function Schedule ({ user }: ScheduleProps){
+export default function Schedule({ user }: ScheduleProps) {
   return (
     <Container>
       <UserHeader>
@@ -29,32 +29,32 @@ export default function Schedule ({ user }: ScheduleProps){
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],
-    fallback: 'blocking'
+    fallback: 'blocking',
   }
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const username = String(params?.username)
 
-  const user = await prisma.user.findUnique({ 
+  const user = await prisma.user.findUnique({
     where: {
-      username
-    }
+      username,
+    },
   })
 
-  if(!user) {
+  if (!user) {
     return {
-      notFound: true
+      notFound: true,
     }
   }
 
   return {
     props: {
-      user:{
+      user: {
         name: user.name,
         bio: user.bio,
-        avatarUrl: user.avatar_url
-      }
+        avatarUrl: user.avatar_url,
+      },
     },
     revalidate: 60 * 60 * 24, // 1 day
   }

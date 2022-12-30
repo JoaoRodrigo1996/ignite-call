@@ -5,7 +5,7 @@ import {
   Heading,
   MultiStep,
   Text,
-  TextInput
+  TextInput,
 } from '@ignite-ui/react'
 import { useRouter } from 'next/router'
 import { ArrowRight } from 'phosphor-react'
@@ -21,7 +21,7 @@ import {
   IntervalDay,
   IntervalInputs,
   IntervalItem,
-  IntervalsContainer
+  IntervalsContainer,
 } from './styles'
 
 const timeIntervalsFormSchema = z.object({
