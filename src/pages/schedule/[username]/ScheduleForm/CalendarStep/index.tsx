@@ -4,11 +4,11 @@ import {
   TimePicker,
   TimePickerHeader,
   TimePickerItem,
-  TimePickerList,
+  TimePickerList
 } from './styles'
 
 export function CalendarStep() {
-  const isDateSelected = true
+  const isDateSelected = false
 
   return (
     <Container isTimePickerOpen={isDateSelected}>
