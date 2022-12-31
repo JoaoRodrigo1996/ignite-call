@@ -8,13 +8,13 @@ import {
   CalendarContainer,
   CalendarDay,
   CalendarHeader,
-  CalendarTitle
+  CalendarTitle,
 } from './styles'
 
 interface CalendarWeek {
   week: number
   days: Array<{
-    date: dayjs.Dayjs,
+    date: dayjs.Dayjs
     disabled: boolean
   }>
 }
@@ -40,44 +40,52 @@ export function Calendar() {
 
     const firstWeekDay = currentDate.get('day')
     const previousMonthFillArray = Array.from({
-      length: firstWeekDay
-    }).map((_, i) => {
-      return currentDate.subtract(i + 1, 'day')
-    }).reverse()
+      length: firstWeekDay,
+    })
+      .map((_, i) => {
+        return currentDate.subtract(i + 1, 'day')
+      })
+      .reverse()
 
-    const lastDayInCurrentMonth = currentDate.set('date', currentDate.daysInMonth())
+    const lastDayInCurrentMonth = currentDate.set(
+      'date',
+      currentDate.daysInMonth(),
+    )
     const lastWeekDay = lastDayInCurrentMonth.get('day')
 
     const nextMonthFillArray = Array.from({
-      length: 7 - (lastWeekDay + 1)
+      length: 7 - (lastWeekDay + 1),
     }).map((_, i) => {
       return lastDayInCurrentMonth.add(i + 1, 'day')
     })
 
     const calendarDays = [
-      ...previousMonthFillArray.map(date => {
+      ...previousMonthFillArray.map((date) => {
         return { date, disabled: true }
       }),
-      ...daysInMonthArray.map(date => {
+      ...daysInMonthArray.map((date) => {
         return { date, disabled: false }
       }),
-      ...nextMonthFillArray.map(date => {
+      ...nextMonthFillArray.map((date) => {
         return { date, disabled: true }
-      })
+      }),
     ]
 
-    const calendarWeeks = calendarDays.reduce<CalendarWeeks>((weeks, _, i, original) => {
-      const isNewWeek = i % 7 === 0
+    const calendarWeeks = calendarDays.reduce<CalendarWeeks>(
+      (weeks, _, i, original) => {
+        const isNewWeek = i % 7 === 0
 
-      if(isNewWeek){
-        weeks.push({
-          week: i / 7 + 1,
-          days: original.slice(i, i + 7)
-        })
-      }
+        if (isNewWeek) {
+          weeks.push({
+            week: i / 7 + 1,
+            days: original.slice(i, i + 7),
+          })
+        }
 
-      return weeks
-    }, [])
+        return weeks
+      },
+      [],
+    )
 
     return calendarWeeks
   }, [currentDate])
@@ -103,10 +111,10 @@ export function Calendar() {
           {currentMonth} <span>{currentYear}</span>
         </CalendarTitle>
         <CalendarActions>
-          <button onClick={handlePreviousMonth} title='Previous month'>
+          <button onClick={handlePreviousMonth} title="Previous month">
             <CaretLeft />
           </button>
-          <button onClick={handleNextMonth} title='Next month'>
+          <button onClick={handleNextMonth} title="Next month">
             <CaretRight />
           </button>
         </CalendarActions>
@@ -127,7 +135,9 @@ export function Calendar() {
                 {days.map(({ date, disabled }) => {
                   return (
                     <td key={date.toString()}>
-                      <CalendarDay disabled={disabled} >{date.get('date')}</CalendarDay>
+                      <CalendarDay disabled={disabled}>
+                        {date.get('date')}
+                      </CalendarDay>
                     </td>
                   )
                 })}
