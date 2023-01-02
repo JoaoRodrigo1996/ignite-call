@@ -6,7 +6,7 @@ import {
   TimePicker,
   TimePickerHeader,
   TimePickerItem,
-  TimePickerList
+  TimePickerList,
 } from './styles'
 
 export function CalendarStep() {
