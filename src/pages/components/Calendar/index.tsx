@@ -8,7 +8,7 @@ import {
   CalendarContainer,
   CalendarDay,
   CalendarHeader,
-  CalendarTitle
+  CalendarTitle,
 } from './styles'
 
 interface CalendarWeek {
