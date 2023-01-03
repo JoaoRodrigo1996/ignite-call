@@ -42,9 +42,8 @@ export default async function handle(
   const blockedDatesRaw: Array<{ date: number }> = await prisma.$queryRaw`
     SELECT
       EXTRACT(DAY FROM S.date) AS date,
-      COUNT(S.date) as amount,
+      COUNT(S.date) AS amount,
       ((UTI.time_end_in_minutes - UTI.time_start_in_minutes) / 60) AS size
-
     FROM schedulings S
 
     LEFT JOIN user_time_intervals UTI
