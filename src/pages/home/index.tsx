@@ -10,7 +10,7 @@ import { Container, Hero, Preview } from './styles'
 export default function Home() {
   return (
     <>
-      <NextSeo 
+      <NextSeo
         title="Descomplique sua agenda | Ignite Call"
         description="Conecte seu calendário e permita que as pessoas marquem agendamentos
         no seu tempo livre."
@@ -36,7 +36,6 @@ export default function Home() {
           />
         </Preview>
       </Container>
-    
     </>
   )
 }

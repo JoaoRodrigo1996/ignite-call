@@ -5,7 +5,7 @@ import {
   Heading,
   MultiStep,
   Text,
-  TextInput
+  TextInput,
 } from '@ignite-ui/react'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
@@ -22,7 +22,7 @@ import {
   IntervalDay,
   IntervalInputs,
   IntervalItem,
-  IntervalsContainer
+  IntervalsContainer,
 } from './styles'
 
 const timeIntervalsFormSchema = z.object({
@@ -115,8 +115,8 @@ export default function TimeIntervals() {
         <Header>
           <Heading as="strong">Quase lá</Heading>
           <Text>
-            Defina o intervalo de horários que você está disponível em cada dia da
-            semana.
+            Defina o intervalo de horários que você está disponível em cada dia
+            da semana.
           </Text>
 
           <MultiStep size={4} currentStep={3} />
